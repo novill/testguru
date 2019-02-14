@@ -1,1 +1,1 @@
-Rails::PROGRAMM_VERSION = '0.0.1'
+Rails.application.config.version = '0.1.0'
