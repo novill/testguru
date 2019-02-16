@@ -33,3 +33,6 @@
 .idea/
 .rubocop.yml
 credentials.yml.enc
+
+.ruby-version
+.ruby-gemset
