@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_16_084722) do
+ActiveRecord::Schema.define(version: 2019_02_16_165317) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
-    t.string "body", limit: 150, null: false
+    t.string "body", null: false
     t.boolean "correct", default: false, null: false
     t.bigint "question_id"
     t.datetime "created_at", null: false
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_02_16_084722) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "title", limit: 50, null: false
+    t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,8 +37,18 @@ ActiveRecord::Schema.define(version: 2019_02_16_084722) do
     t.index ["test_id"], name: "index_questions_on_test_id"
   end
 
+  create_table "results", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "test_id"
+    t.float "result", default: 0.0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["test_id"], name: "index_results_on_test_id"
+    t.index ["user_id"], name: "index_results_on_user_id"
+  end
+
   create_table "tests", force: :cascade do |t|
-    t.string "title", limit: 150, null: false
+    t.string "title", null: false
     t.integer "level", default: 1, null: false
     t.bigint "category_id"
     t.datetime "created_at", null: false
@@ -47,12 +57,14 @@ ActiveRecord::Schema.define(version: 2019_02_16_084722) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name", limit: 30, null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "answers", "questions"
   add_foreign_key "questions", "tests"
+  add_foreign_key "results", "tests"
+  add_foreign_key "results", "users"
   add_foreign_key "tests", "categories"
 end
