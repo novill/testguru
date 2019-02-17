@@ -4,7 +4,7 @@ class Test < ApplicationRecord
   has_many :results
   has_many :passing_users, through: :results, source: :users
 
-  belongs_to :user
+  belongs_to :author, :class_name => 'User', :foreign_key => 'user_id'
   # Создайте метод класса в модели Test,
   # который возвращает отсортированный по убыванию массив названий всех Тестов
   # у которых Категория называется определённым образом
@@ -18,6 +18,6 @@ class Test < ApplicationRecord
   end
 
   def to_s
-    "#{category.title} #{title} #{level} #{user.name}"
+    "#{category.title} #{title} #{level} #{author.name}"
   end
 end
