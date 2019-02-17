@@ -9,13 +9,10 @@ class Test < ApplicationRecord
   # у которых Категория называется определённым образом
   # (название категории передается в метод в качестве аргумента).
 
-  # Я не понял по шаблону или прямо по имени
-
-  def self.titles_by_category(template)
-    Test.joins(:category).where("categories.title like ?", "%#{template}%").order('tests.title DESC').pluck('tests.title')
-  end
-
   def self.titles_by_category_name(name)
-    Test.joins(:category).where({categories: {title: name}}).order('tests.title DESC').pluck('tests.title')
+    Test.joins(:category)
+        .where(categories: { title: name })
+        .order('tests.title DESC')
+        .pluck('tests.title')
   end
 end
