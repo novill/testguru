@@ -2,8 +2,9 @@ class Test < ApplicationRecord
   belongs_to :category
   has_many :questions
   has_many :results
-  has_many :users, through: :results
+  has_many :passing_users, through: :results, source: :users
 
+  belongs_to :user
   # Создайте метод класса в модели Test,
   # который возвращает отсортированный по убыванию массив названий всех Тестов
   # у которых Категория называется определённым образом
@@ -14,5 +15,9 @@ class Test < ApplicationRecord
         .where(categories: { title: name })
         .order('tests.title DESC')
         .pluck('tests.title')
+  end
+
+  def to_s
+    "#{category.title} #{title} #{level} #{user.name}"
   end
 end
