@@ -10,12 +10,12 @@
   Category.find_or_create_by(title: title)
 end
 
-puts "Созданы категории: #{Category.pluck(:title).to_s}"
+puts "Созданы категории: #{Category.pluck(:title)}"
 
 ['Jonh Smith', 'Richard Branson', 'Ilon Mask', 'Ben Davis'].each do |name|
   User.find_or_create_by(name: name)
 end
-puts "Созданы пользователи: #{User.all.pluck(:name).to_s}"
+puts "Созданы пользователи: #{User.all.pluck(:name)}"
 
 default_author = User.last
 
@@ -40,7 +40,7 @@ Category.first(3).each do |category|
   )
 end
 
-puts "Созданы тесты: #{Test.all.map(&:to_s).to_s}"
+puts "Созданы тесты: #{Test.all.map(&:to_s)}"
 
 Test.all.each do |test|
   next if test.questions.any?
@@ -57,10 +57,10 @@ Question.all.each do |question|
   next if question.answers.any?
 
   question.answers = Array.new(2) do |number|
+    number += 1
     Answer.new(
-      number += 1
       body: "Answer #{number} for question #{question.id}",
-      correct: (question.id+number).even?
+      correct: (question.id + number).even?
     )
   end
 end
@@ -72,4 +72,4 @@ User.second.passing_tests = Category.second.tests.first(2)
 User.third.passing_tests = Test.where(level: 0)
 
 puts "Пользователи распределены по тестам"
-User.all.each { |u|  puts "#{u.name} #{u.passing_test_ids.to_s}" }
+User.all.each { |u|  puts "#{u.name} #{u.passing_test_ids}" }
