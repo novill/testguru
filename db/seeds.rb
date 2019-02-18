@@ -45,8 +45,9 @@ puts "Созданы тесты: #{Test.all.map(&:to_s).to_s}"
 Test.all.each do |test|
   next if test.questions.any?
 
-  test.questions = Array.new(2) do |numder|
-    Question.new(body: "Question body #{numder} for #{test}")
+  test.questions = Array.new(2) do |number|
+    number += 1
+    Question.new(body: "Question body #{number} for #{test}")
   end
 end
 
@@ -57,6 +58,7 @@ Question.all.each do |question|
 
   question.answers = Array.new(2) do |number|
     Answer.new(
+      number += 1
       body: "Answer #{number} for question #{question.id}",
       correct: (question.id+number).even?
     )
