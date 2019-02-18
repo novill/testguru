@@ -10,22 +10,64 @@
   Category.find_or_create_by(title: title)
 end
 
+puts "Созданы категории: #{Category.pluck(:title).to_s}"
+
+['Jonh Smith', 'Richard Branson', 'Ilon Mask', 'Ben Davis'].each do |name|
+  User.find_or_create_by(name: name)
+end
+puts "Созданы пользователи: #{User.all.pluck(:name).to_s}"
+
+default_author = User.last
+
 Category.all.each do |category|
-  category.tests.find_or_create_by(title: "Beginner test for #{category.title}", level: 0)
-  category.tests.find_or_create_by(title: "Medium test for #{category.title}", level: 1)
+  category.tests.find_or_create_by(
+    title: "Beginner test for #{category.title}",
+    level: 0,
+    author: default_author
+  )
+  category.tests.find_or_create_by(
+    title: "Medium test for #{category.title}",
+    level: 1,
+    author: default_author
+  )
 end
 
 Category.first(3).each do |category|
-  category.tests.find_or_create_by(title: "Hard test for #{category.title}", level: 2)
+  category.tests.find_or_create_by(
+    title: "Hard test for #{category.title}",
+    level: 2,
+    author: default_author
+  )
 end
 
-['Jonh Smith', 'Richard Branson', 'Ilon Mask', 'Ben Davis'].each do |name|
-  User.find_or_create_by(name: name)
-end
-['Jonh Smith', 'Richard Branson', 'Ilon Mask', 'Ben Davis'].each do |name|
-  User.find_or_create_by(name: name)
+puts "Созданы тесты: #{Test.all.map(&:to_s).to_s}"
+
+Test.all.each do |test|
+  next if test.questions.any?
+
+  test.questions = Array.new(2) do |numder|
+    Question.new(body: "Question body #{numder} for #{test}")
+  end
 end
 
-User.first.tests = Category.first.tests
-User.second.tests = Category.second.tests.first(2)
-User.third.tests = Test.where(level: 0)
+puts "Создано вопросов: #{Question.all.count}"
+
+Question.all.each do |question|
+  next if question.answers.any?
+
+  question.answers = Array.new(2) do |number|
+    Answer.new(
+      body: "Answer #{number} for question #{question.id}",
+      correct: (question.id+number).even?
+    )
+  end
+end
+
+puts "Создано ответов: #{Answer.all.count}"
+
+User.first.passing_tests = Category.first.tests
+User.second.passing_tests = Category.second.tests.first(2)
+User.third.passing_tests = Test.where(level: 0)
+
+puts "Пользователи распределены по тестам"
+User.all.each { |u|  puts "#{u.name} #{u.passing_test_ids.to_s}" }
