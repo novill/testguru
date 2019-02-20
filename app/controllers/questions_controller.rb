@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
 
-  before_action :set_test, except: [:destroy]
+  before_action :set_test
   before_action :set_question, only: [:show]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_for_test_not_found
@@ -36,13 +36,13 @@ class QuestionsController < ApplicationController
     # render json: params
     Question.find(params[:id]).destroy
 
-    redirect_to action: :index, test_id: params[:test_id]
+    redirect_to action: :index, test_id: @test.id
   end
 
 private
 
   def rescue_for_test_not_found
-    redirect_to controller: :tests, action: :index, status: :not_found
+    render plain: 'Тест не найден', status: :not_found
   end
 
   def set_question
