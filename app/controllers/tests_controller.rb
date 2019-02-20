@@ -1,7 +1,8 @@
 class TestsController < ApplicationController
 
   def index
-    render plain: Test.all.map(&:to_s).join("\n")
+    page = [@errors, Test.all.map(&:to_s)].compact
+    render plain: page.join("\n")
   end
 
 end

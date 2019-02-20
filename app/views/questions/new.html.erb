@@ -7,7 +7,10 @@
 <body >
 <h1>Создание вопроса</h1>
 
-<form action="/tests/<%= @test.id %>/questions", method="post">
+<% if @errors %>
+ <p> @errors </p>
+<% end %>
+<form action="/questions" method="post">
 
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 

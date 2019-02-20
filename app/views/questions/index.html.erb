@@ -10,7 +10,7 @@
 <% @questions.each do |question| %>
   <p>
     <span><%= question.body %></span>
-    <a href="<%= test_question_path(@test, question) %>" data-method="delete">Удалить</a>
+    <a href="<%= question_path(question, {test_id: @test.id}) %>" data-method="delete">Удалить</a>
   </p>
 <% end %>
 
