@@ -1,10 +1,15 @@
 class QuestionsController < ApplicationController
 
   before_action :set_test
+  rescue_from ActiveRecord::RecordNotFound, with: :rescue_for_test_not_found
 
   def index
     @questions = @test.questions
-    # render plain: @questions.map(&:body).join("\n")
+
+    respond_to do |format|
+      format.text { render plain: @questions.map(&:body).join("\n") }
+      format.html
+    end
   end
 
   def show
@@ -29,6 +34,10 @@ class QuestionsController < ApplicationController
   end
 
 private
+
+  def rescue_for_test_not_found
+    redirect_to controller: :tests, action: :index
+  end
 
   def set_question
     @question = @test.questions.find(params[:id])
