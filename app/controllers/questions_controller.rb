@@ -21,6 +21,11 @@ class QuestionsController < ApplicationController
     render plain: question.body
   end
 
+  def delete
+    @test.questions.find(params[:id]).destroy
+    redirect_to action: :index
+  end
+
 private
 
   def set_question
