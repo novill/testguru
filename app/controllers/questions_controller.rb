@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
   def create
     question = @test.questions.new(question_params)
     if question.save
-      render plain: question.body
+      redirect_to test_questions_path(@test)
     else
       @errors = question.errors.full_messages.join(',')
       render :new

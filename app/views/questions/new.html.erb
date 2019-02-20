@@ -8,9 +8,9 @@
 <h1>Создание вопроса</h1>
 
 <% if @errors %>
- <p> @errors </p>
+ <p> <%=@errors  %></p>
 <% end %>
-<form action="/questions" method="post">
+<form action="/tests/<%= @test.id %>/questions" method="post">
 
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
