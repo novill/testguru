@@ -3,7 +3,8 @@ class QuestionsController < ApplicationController
   before_action :set_test
 
   def index
-    render plain: @test.questions.map(&:body).join("\n")
+    @questions = @test.questions
+    # render plain: @questions.map(&:body).join("\n")
   end
 
   def show
@@ -21,8 +22,9 @@ class QuestionsController < ApplicationController
     render plain: question.body
   end
 
-  def delete
+  def destroy
     @test.questions.find(params[:id]).destroy
+
     redirect_to action: :index
   end
 
