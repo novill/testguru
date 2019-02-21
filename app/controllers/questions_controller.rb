@@ -1,7 +1,6 @@
 class QuestionsController < ApplicationController
-
   before_action :set_test
-  before_action :set_question, only: [:show]
+  before_action :set_question, only: [:show, :destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_for_test_not_found
 
@@ -19,7 +18,6 @@ class QuestionsController < ApplicationController
   end
 
   def new
-
   end
 
   def create
@@ -34,7 +32,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     # render json: params
-    Question.find(params[:id]).destroy
+    @question.destroy
 
     redirect_to action: :index, test_id: @test.id
   end
@@ -47,7 +45,6 @@ private
 
   def set_question
     @question = @test.questions.find(params[:id])
-    #Question.find(params[:id])
   end
 
   def set_test
@@ -57,5 +54,4 @@ private
   def question_params
     params.require(:question).permit(:body)
   end
-
 end
