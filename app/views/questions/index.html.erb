@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body >
+<h1>Вопросы теста</h1>
+
+<% @questions.each do |question| %>
+  <p>
+    <span><%= question.body %></span>
+    <a href="<%= question_path(question, {test_id: @test.id}) %>" data-method="delete">Удалить</a>
+  </p>
+<% end %>
+
+</body>
+</html>
