@@ -60,7 +60,7 @@ puts "Создано вопросов: #{Question.all.count}"
 Question.all.each do |question|
   next if question.answers.any?
 
-  question.answers = Array.new(2) do |number|
+  question.answers = Array.new(4) do |number|
     number += 1
     Answer.new(
       body: "Answer #{number} for question #{question.id}",
@@ -71,9 +71,9 @@ end
 
 puts "Создано ответов: #{Answer.all.count}"
 
-User.first.passing_tests = Category.first.tests
-User.second.passing_tests = Category.second.tests.first(2)
-User.third.passing_tests = Test.where(level: 0)
-
-puts "Пользователи распределены по тестам"
-User.all.each { |u|  puts "#{u.name} #{u.passing_test_ids}" }
+# User.first.passing_tests = Category.first.tests
+# User.second.passing_tests = Category.second.tests.first(2)
+# User.third.passing_tests = Test.where(level: 0)
+#
+# puts "Пользователи распределены по тестам"
+# User.all.each { |u|  puts "#{u.name} #{u.passing_test_ids}" }

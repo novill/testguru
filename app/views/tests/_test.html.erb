@@ -3,7 +3,7 @@
   <td><%= test.level %></td>
   <td><%= test.category %></td>
   <td><%= test.author %></td>
-  <td><%= test.questions.count %></td>
+  <td><%= test.questions.size %></td>
   <td><%= link_to 'Show', test %></td>
   <td><%= link_to 'Edit', edit_test_path(test) %></td>
   <td><%= link_to 'Destroy', test, method: :delete, data: { confirm: 'Are you sure?' } %></td>

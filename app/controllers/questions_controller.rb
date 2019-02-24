@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_test, only: [:index, :create, :new]
+  before_action :set_test, only: [:create, :new]
   before_action :set_question, only: [:show, :destroy, :edit, :update]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_for_test_not_found
