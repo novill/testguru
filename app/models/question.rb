@@ -3,4 +3,8 @@ class Question < ApplicationRecord
   has_many :answers, dependent: :delete_all
 
   validates :body, presence: true
+
+  def to_s
+    body
+  end
 end

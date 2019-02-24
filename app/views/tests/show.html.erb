@@ -1,7 +1,22 @@
-<p><%=@test.title %></p>
-<p><%=@test.level %></p>
-<p><%=@test.category %></p>
-<p><%=@test.author %></p>
+<h1><%=@test.title %></h1>
+<p>Level <%=@test.level %></p>
+<p>Category <%=@test.category %></p>
+<p>Author <%=@test.author %></p>
 <br>
 <%= link_to 'Edit', edit_test_path(@test) %> |
 <%= link_to 'List', tests_path %>
+<br>
+<p>Вопросы:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @questions %>
+  </tbody>
+</table>
+<%= link_to 'New question',  new_test_question_path(@test) %>
+

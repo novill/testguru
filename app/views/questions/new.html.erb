@@ -1,26 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
+<h1><%= page_header %></h1>
 
-<body >
-<h1>Создание вопроса</h1>
+<%= render 'form' %>
 
-<% if @errors %>
- <p> <%=@errors  %></p>
-<% end %>
-<form action="/tests/<%= @test.id %>/questions" method="post">
-
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-
-  <p>
-    <label for="question[body]">Body</label>
-    <input type="text" name="question[body]" id="question_body">
-  </p>
-
-  <br>
-  <input type="submit" value="Создать">
-</form>
-</body>
-</html>
+<%= link_to 'To test', @test %>
