@@ -1,6 +1,6 @@
 class Test < ApplicationRecord
   belongs_to :category
-  has_many :questions
+  has_many :questions, dependent: :destroy_all
   has_many :results
   has_many :passing_users, through: :results, source: :users
 
@@ -12,9 +12,10 @@ class Test < ApplicationRecord
   }
 
   validates :title, presence: true, uniqueness: { scope: :level }
+  validates :level, inclusion: 0..3, allow_nil: true
 
-  scope :by_hardness, -> (hardness) do
-    levels = case hardness
+  scope :by_complexity, -> (complexity) do
+    levels = case complexity
              when :easy
                0..1
              when :medium
@@ -26,10 +27,6 @@ class Test < ApplicationRecord
     where(level: levels)
   end
 
-  # Создайте метод класса в модели Test,
-  # который возвращает отсортированный по убыванию массив названий всех Тестов
-  # у которых Категория называется определённым образом
-  # (название категории передается в метод в качестве аргумента).
   scope :by_category_name, -> (name) do
     joins(:category)
     .where(categories: { title: name })

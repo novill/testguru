@@ -31,7 +31,7 @@ Category.all.each do |category|
   )
   category.tests.find_or_create_by(
     title: "Medium test for #{category.title}",
-    level: 2,
+    level: 1,
     author: default_author
   )
 end
@@ -39,7 +39,7 @@ end
 Category.first(3).each do |category|
   category.tests.find_or_create_by(
     title: "Hard test for #{category.title}",
-    level: 5,
+    level: 3,
     author: default_author
   )
 end
