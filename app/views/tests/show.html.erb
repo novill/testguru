@@ -8,11 +8,15 @@
 <br>
 <p>Вопросы:</p>
 <table>
-  <tr>
-    <th>Question</th>
-    <th span="3">Actions</th>
-  </tr>
-  <%= render @questions %>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @questions %>
+  </tbody>
 </table>
 <%= link_to 'New question',  new_test_question_path(@test) %>
 

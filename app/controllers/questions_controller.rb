@@ -1,11 +1,11 @@
 class QuestionsController < ApplicationController
   before_action :set_test, only: [:index, :create, :new]
-  before_action :set_question, only: [:show, :destroy, :edit]
+  before_action :set_question, only: [:show, :destroy, :edit, :update]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_for_test_not_found
 
   def show
-    render plain: @question.body
+    #@test = @question.test перенес во вью, не знаю как лучше
   end
 
   def new
@@ -24,15 +24,12 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    @test = @question.test
-    Rails.logger.info '-'*50
-    Rails.logger.info @test.inspect
-    Rails.logger.info @question.inspect
+    # @test = @question.test Нельзя, @test должен быть nil
   end
 
   def update
     if @question.update(question_params)
-      redirect_to @question
+      redirect_to @question.test
     else
       render :edit
     end
@@ -41,7 +38,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
 
-    redirect_to test_path(@test)
+    redirect_to @question.test
   end
 
 private
