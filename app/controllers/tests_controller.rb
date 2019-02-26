@@ -35,7 +35,7 @@ class TestsController < ApplicationController
   end
 
   def start
-    @user.tests.push(@test) #find_or_create
+    @user.tests.push(@test) # find_or_create
     redirect_to @user.test_passage(@test)
   end
 

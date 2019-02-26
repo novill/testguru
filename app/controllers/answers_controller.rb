@@ -19,11 +19,11 @@ class AnswersController < ApplicationController
   def create
     @answer = @question.answers.new(answer_params)
 
-      if @answer.save
-        redirect_to @answer
-      else
-        render :new
-      end
+    if @answer.save
+      redirect_to @answer
+    else
+      render :new
+    end
   end
 
   # PATCH/PUT /answers/1
@@ -48,9 +48,7 @@ class AnswersController < ApplicationController
     end
 
     def set_question
-      puts '_'*50, __method__
       @question = Question.find(params[:question_id])
-      puts @question, '_'*50
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
