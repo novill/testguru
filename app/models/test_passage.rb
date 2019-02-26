@@ -3,6 +3,8 @@ class TestPassage < ApplicationRecord
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
 
+  MIN_SUCCESS_PERCENT = 85
+
   before_validation :before_validation_set_first_question, on: :create
 
   def accept!(answer_ids)
@@ -23,7 +25,7 @@ class TestPassage < ApplicationRecord
   end
 
   def success?
-    percent_result > 85
+    percent_result >= MIN_SUCCESS_PERCENT
   end
 
   private
