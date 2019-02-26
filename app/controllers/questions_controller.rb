@@ -5,7 +5,6 @@ class QuestionsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_for_test_not_found
 
   def show
-    #@test = @question.test перенес во вью, не знаю как лучше
   end
 
   def new
@@ -24,7 +23,6 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    # @test = @question.test Нельзя, @test должен быть nil
   end
 
   def update
@@ -41,21 +39,21 @@ class QuestionsController < ApplicationController
     redirect_to @question.test
   end
 
-private
+  private
 
-  def rescue_for_test_not_found
-    render plain: "Not found #{params}", status: :not_found
-  end
+    def rescue_for_test_not_found
+      render plain: "Not found #{params}", status: :not_found
+    end
 
-  def set_question
-    @question = Question.find(params[:id])
-  end
+    def set_question
+      @question = Question.find(params[:id])
+    end
 
-  def set_test
-    @test = Test.find(params[:test_id])
-  end
+    def set_test
+      @test = Test.find(params[:test_id])
+    end
 
-  def question_params
-    params.require(:question).permit(:body)
-  end
+    def question_params
+      params.require(:question).permit(:body)
+    end
 end

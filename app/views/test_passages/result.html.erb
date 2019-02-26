@@ -1,0 +1,10 @@
+<h1>The <%= @test_passage.test.title %> test was complited </h1>
+<% if @test_passage.success? %>
+ <p id="success">
+  You successfully passed this test <%=@test_passage.percent_result%>%
+ </p>
+<% else %>
+  <p id="fail">
+    You failed this test <%=@test_passage.percent_result%>%
+  </p>
+<% end %>
