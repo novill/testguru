@@ -1,4 +1,5 @@
 class TestsController < ApplicationController
+
   before_action :set_test, only: [:show, :edit, :update, :start, :destroy]
   before_action :set_user
 
@@ -55,6 +56,6 @@ class TestsController < ApplicationController
     end
 
     def set_user
-      @user = User.first
+      @user = current_user
     end
 end
