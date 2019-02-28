@@ -12,11 +12,14 @@ end
 
 puts "Созданы категории: #{Category.pluck(:title)}"
 
-['Jonh Smith', 'Richard Branson', 'Ilon Mask', 'Ben Davis'].each do |name|
-  User.find_or_create_by(
+['Jonh Smith', 'Richard Branson', 'Ilon Mask', 'Ben Davis'].each_with_index do |name, index|
+  User.find_or_create_by!(
     name: name,
-    email: "#{name.tr(' ', '')}@example.com"
-  )
+    email: "#{name.tr(' ', '')}@example.com") do |user|
+      user.password = index.to_s
+      puts "#{user.name} #{user.password}"
+      user.password_confirmation = index.to_s
+    end
 end
 
 puts "Созданы пользователи: #{User.all.pluck(:name)}"
@@ -24,12 +27,12 @@ puts "Созданы пользователи: #{User.all.pluck(:name)}"
 default_author = User.last
 
 Category.all.each do |category|
-  category.tests.find_or_create_by(
+  category.tests.find_or_create_by!(
     title: "Beginner test for #{category.title}",
     level: 0,
     author: default_author
   )
-  category.tests.find_or_create_by(
+  category.tests.find_or_create_by!(
     title: "Medium test for #{category.title}",
     level: 1,
     author: default_author
@@ -37,7 +40,7 @@ Category.all.each do |category|
 end
 
 Category.first(3).each do |category|
-  category.tests.find_or_create_by(
+  category.tests.find_or_create_by!(
     title: "Hard test for #{category.title}",
     level: 3,
     author: default_author
