@@ -9,11 +9,9 @@ class ApplicationController < ActionController::Base
 
     def authenticate_user!
       unless current_user
-        session[:request_path] = request.path
+        cookies[:request_path] = request.path
         return redirect_to login_path
       end
-
-      cookies[:email] = current_user.email
     end
 
     def current_user

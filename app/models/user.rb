@@ -18,10 +18,13 @@ class User < ApplicationRecord
     name
   end
 
+  def test_passage(test)
+    test_passages.order(id: :desc).find_by(test_id: test.id)
+  end
+
   private
 
    def digest(string)
      Digest::SHA1.hexdigest(string)
-
    end
 end
