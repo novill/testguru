@@ -1,7 +1,6 @@
 require 'digest/sha1'
 
 class User < ApplicationRecord
-
   has_many :authored_tests, class_name: 'Test', foreign_key: :user_id
   has_many :test_passages
   has_many :tests, through: :test_passages
@@ -24,7 +23,7 @@ class User < ApplicationRecord
 
   private
 
-   def digest(string)
-     Digest::SHA1.hexdigest(string)
-   end
+    def digest(string)
+      Digest::SHA1.hexdigest(string)
+    end
 end

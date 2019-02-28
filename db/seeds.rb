@@ -12,7 +12,8 @@ end
 
 puts "Созданы категории: #{Category.pluck(:title)}"
 
-['Jonh Smith', 'Richard Branson', 'Ilon Mask', 'Ben Davis'].each_with_index do |name, index|
+user_names = ['Jonh Smith', 'Richard Branson', 'Ilon Mask', 'Ben Davis']
+user_names.each_with_index do |name, index|
   User.find_or_create_by!(
     name: name,
     email: "#{name.tr(' ', '')}@example.com") do |user|
