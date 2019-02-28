@@ -1,5 +1,4 @@
 class TestsController < ApplicationController
-
   before_action :set_test, only: [:show, :edit, :update, :start, :destroy]
 
   def index
