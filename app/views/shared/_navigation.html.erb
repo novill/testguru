@@ -1,15 +1,15 @@
 <div>
   <h1><%= link_to 'Test Guru', root_path %></h1>
-  <% if logged_in?  %>
+  <% if user_signed_in?  %>
     <p class="nav">
-      <%= "Welcome, #{current_user.name} Guru" %>
-      <%= link_to 'Logout', logout_path %>
+      <%= "Welcome, #{current_user.email} Guru" %>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
     </p>
   <% else %>
     <p class="nav">
-      <%= link_to 'Log in', login_path %>
+      <%= link_to 'Log in', new_user_session_path %>
       &nbsp;or &nbsp;
-      <%= link_to 'Sing up', signup_path %>
+      <%= link_to 'Sing up', new_user_registration_path %>
     </p>
 
   <% end %>
