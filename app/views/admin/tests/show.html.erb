@@ -3,8 +3,8 @@
 <p>Category <%=@test.category %></p>
 <p>Author <%=@test.author %></p>
 <br>
-<%= link_to 'Edit', edit_test_path(@test) %> |
-<%= link_to 'List', tests_path %>
+<%= link_to 'Edit', edit_admin_test_path(@test) %> |
+<%= link_to 'List', admin_tests_path %>
 <br>
 <p>Вопросы:</p>
 <table>
@@ -15,8 +15,9 @@
     </tr>
   </thead>
   <tbody>
-    <%= render @questions %>
+  <%#= render @questions %>
+  <%= render partial: 'admin/questions/question', collection: @questions %>
   </tbody>
 </table>
-<%= link_to 'New question',  new_test_question_path(@test) %>
+<%= link_to 'New question',  new_admin_test_question_path(@test) %>
 

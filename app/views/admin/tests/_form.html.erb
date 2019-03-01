@@ -1,5 +1,5 @@
-<%= form_with(model: test, local: true) do |form| %>
-  <%= render 'shared/errors', record: test %>
+<%= form_with(model: [:admin, @test], local: true) do |form| %>
+  <%= render 'shared/errors', record: @test %>
 
   <p>
     <%= form.label :title  %>
