@@ -1,4 +1,4 @@
-<h1>The <%= @test_passage.test.title %> test was complited </h1>
+<h1> <%= I18n.t('test_passages.result.header', title: @test_passage.test.title) %></h1>
 <% if @test_passage.success? %>
  <p id="success">
   You successfully passed this test <%=@test_passage.percent_result%>%

@@ -1,14 +1,13 @@
-<h1>Tests</h1>
+<h1><%= t('.header') %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Level</th>
-      <th>Category</th>
-      <th>Author</th>
-      <th>Questions</th>
-      <th>Actions</th>
+      <% humanize_attribute_names(%i[title level category author]).each do |field_name| %>
+        <th><%= field_name %></th>
+      <% end %>
+      <th><%= t('.questions') %></th>
+      <th><%= t('.actions') %></th>
     </tr>
   </thead>
 
