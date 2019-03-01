@@ -33,11 +33,6 @@ class Admin::TestsController < Admin::BaseController
     end
   end
 
-  def start
-    current_user.tests.push(@test) # find_or_create
-    redirect_to current_user.test_passage(@test)
-  end
-
   def destroy
     @test.destroy
     redirect_to admin_tests_path
