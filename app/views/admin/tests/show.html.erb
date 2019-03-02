@@ -1,22 +1,24 @@
-<h1><%=@test.title %></h1>
-<p><%= Test.human_attribute_name(:level) %>: <%=@test.level %></p>
-<p><%= Test.human_attribute_name(:category) %>: <%=@test.category %></p>
-<p><%= Test.human_attribute_name(:author) %>: <%=@test.author %></p>
-<br>
-<%= link_to t('.edit'), edit_admin_test_path(@test) %> |
-<%= link_to t('.list'), admin_tests_path %>
-<br>
-<table>
-  <thead>
-    <tr>
-      <th><%= t('.questions') %></th>
-      <th colspan="3"><%= t('.actions') %></th>
-    </tr>
-  </thead>
-  <tbody>
-  <%#= render @questions %>
-  <%= render partial: 'admin/questions/question', collection: @questions %>
-  </tbody>
-</table>
-<%= link_to t('.new_question'),  new_admin_test_question_path(@test) %>
+<div class="container">
+  <h1><%=@test.title %></h1>
+  <p><%= Test.human_attribute_name(:level) %>: <%=@test.level %></p>
+  <p><%= Test.human_attribute_name(:category) %>: <%=@test.category %></p>
+  <p><%= Test.human_attribute_name(:author) %>: <%=@test.author %></p>
+  <br>
+  <%= link_to t('.edit'), edit_admin_test_path(@test), class: "btn btn-link" %> |
+  <%= link_to t('.list'), admin_tests_path, class: "btn btn-link" %>
+  <br>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th><%= t('.questions') %></th>
+        <th colspan="3"><%= t('.actions') %></th>
+      </tr>
+    </thead>
+    <tbody>
+    <%#= render @questions %>
+    <%= render partial: 'admin/questions/question', collection: @questions %>
+    </tbody>
+  </table>
+  <%= link_to t('.new_question'),  new_admin_test_question_path(@test), class: "btn btn-primary" %>
+</div>
 

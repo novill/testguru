@@ -67,6 +67,7 @@ ru:
       logout: "Выйти"
       login: "Зайти"
       signup: "Зарегистрироваться"
+      admin_way: "Управление"
     errors:
       header:
         few: "Обнаружено %{count} ошибки"
