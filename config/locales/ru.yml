@@ -1,33 +1,75 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 ru:
-  hello: "Привет мир"
+  hello: "Привет, %{name}"
+  not_found: 'Не найдено'
+
+  helpers:
+    submit:
+      test:
+        create: "Создать тест"
+        update: "Обновить тест"
+    label:
+      test:
+        title: "Название"
+        level: "Уровень"
+        category: "Категория"
+        author: "Автор"
+    select:
+      prompt: "Выберите категорию!"
+
+  tests:
+    index:
+      header: "Доступные тесты"
+      questions: "Вопросы"
+      actions: "Действия"
+    test:
+      start: "Приступить"
+
+  test_passages:
+    result:
+      header: "Тест %{title} успешно завершен"
+
+  admin:
+    tests:
+      create:
+        success: "Тест успешно создан"
+      index:
+        header: "Доступные тесты"
+        questions: "Вопросы"
+        actions: "Действия"
+      new:
+        header: "Создать тест"
+        list: "К списку тестов"
+      show:
+        edit: "Править"
+        list: "К списку тестов"
+        questions: "Вопросы"
+        actions: "Действия"
+        new_question: "Создать вопрос"
+      edit:
+        header:  "Редактирование теста"
+        list: "К списку тестов"
+      test:
+        show: "Показать"
+        edit: "Править"
+        delete: "Удалить"
+        confirm: "Вы уверены?"
+
+    not_admin: "Вы не адиминистратор!"
+
+  tests_mailer:
+    completed_test:
+      subject: "Вы завершили тест"
+
+  shared:
+    navigation:
+      title: "Тест гуру"
+      welcome: "Привет, %{email} гуру"
+      logout: "Выйти"
+      login: "Зайти"
+      signup: "Зарегистрироваться"
+    errors:
+      header:
+        few: "Обнаружено %{count} ошибки"
+        many: "Обнаружено %{count} ошибок"
+        one: "Обнаружена %{count} ошибка"
+        other: "Обнаружено %{count} ошибки"

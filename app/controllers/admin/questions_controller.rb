@@ -42,7 +42,7 @@ class Admin::QuestionsController < Admin::BaseController
   private
 
     def rescue_for_test_not_found
-      render plain: "Not found #{params}", status: :not_found
+      render plain: t('not_found'), status: :not_found
     end
 
     def set_question
