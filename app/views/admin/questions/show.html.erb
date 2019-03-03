@@ -1,14 +1,15 @@
+<div class="container">
+  <h1><%=@question.test %></h1>
 
-<h1><%=@question.test %></h1>
+  <p><%= @question.body %></p>
 
-<p><%= @question.body %></p>
+  <h2>Answers</h2>
+  <%= link_to 'New answer', new_admin_question_answer_path(@question), class: "btn btn-primary" %>
 
-<h2>Answers</h2>
-<%= link_to 'New answer', new_admin_question_answer_path(@question) %>
+  <ol>
+    <%= render @question.answers %>
+  </ol>
 
-<ol>
-  <%= render @question.answers %>
-</ol>
-
-<%= link_to 'Edit', edit_admin_question_path(@question) %> |
-<%= link_to 'To test', admin_test_path(@question.test) %>
+  <%= link_to 'Edit', edit_admin_question_path(@question), class: "btn btn-link" %> |
+  <%= link_to 'To test', admin_test_path(@question.test), class: "btn btn-link" %>
+</div>
