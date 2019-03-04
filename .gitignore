@@ -36,3 +36,5 @@ credentials.yml.enc
 
 .ruby-version
 .ruby-gemset
+
+.env
