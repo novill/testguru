@@ -13,7 +13,7 @@
     <% @gists.each do |gist| %>
       <tr>
         <td><%= link_to gist.shorten_question, admin_question_path(gist.question) %></td>
-        <td><%= link_to 'Gist', gist.url %></td>
+        <td><%= link_to 'Gist', gist.url, target: :blank %></td>
         <td><%= gist.user.email %></td>
       </tr>
     <% end %>

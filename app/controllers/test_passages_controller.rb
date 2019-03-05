@@ -19,11 +19,11 @@ class TestPassagesController < ApplicationController
   end
 
   def send_gist
-    question =@test_passage.current_question
+    question = @test_passage.current_question
 
     gist_response = GistQuestionService.new(question).call
 
-#    gist_url = gist_response.html_safe не работает
+    #    gist_url = gist_response.html_safe не работает
     gist_url = "https://gist.github.com/#{gist_response.id}"
     gist = Gist.new(question: question,
                     user: current_user,
