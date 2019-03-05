@@ -29,6 +29,7 @@ ru:
   test_passages:
     result:
       header: "Тест %{title} успешно завершен"
+    send_gist: "Ваш гист %{link} отправлен"
 
   admin:
     tests:
@@ -70,6 +71,8 @@ ru:
       login: "Зайти"
       signup: "Зарегистрироваться"
       admin_way: "Управление"
+      gists: "Гисты"
+
     errors:
       header:
         few: "Обнаружено %{count} ошибки"

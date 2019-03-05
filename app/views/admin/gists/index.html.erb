@@ -1,0 +1,22 @@
+<h1>Gists</h1>
+
+<table class="table table-striped table-bordered table-hover table-sm">
+  <thead class="thead-dark">
+    <tr>
+      <th>Question</th>
+      <th>Gist</th>
+      <th>User</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gists.each do |gist| %>
+      <tr>
+        <td><%= link_to gist.shorten_question, admin_question_path(gist.question) %></td>
+        <td><%= link_to 'Gist', gist.url %></td>
+        <td><%= gist.user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
