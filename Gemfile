@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem "octokit"
 
-gem 'dotenv'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 
 gem 'devise', '~> 4.0'
 

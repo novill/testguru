@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_03_04_175001) do
   create_table "gists", force: :cascade do |t|
     t.bigint "question_id"
     t.bigint "user_id"
-    t.string "gist"
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_gists_on_question_id"
