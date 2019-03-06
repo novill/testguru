@@ -5,6 +5,6 @@ class Gist < ApplicationRecord
   validates :url, format: /\Ahttps:\/\/gist\.github\.com\/.+/
 
   def shorten_question
-    question.body[0..24]
+    question.body.truncate(25)
   end
 end
