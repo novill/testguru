@@ -15,7 +15,9 @@ en:
         author: "Author"
     select:
       prompt: "Select category"
-
+  service:
+    gist_question_service:
+      description: "A question about %{title} from testGuru"
   tests:
     index:
       header: "Available tests"
@@ -27,6 +29,7 @@ en:
   test_passages:
     result:
       header: "Test %{title} successfully completed"
+    send_gist: "You gist %{link} successfully sent"
 
   admin:
     tests:
@@ -69,6 +72,7 @@ en:
       login: "Log in"
       signup: "Sign up"
       admin_way: "Manage it"
+      gists: "Gists"
     errors:
       header:
         one: "%{count} error detected"
