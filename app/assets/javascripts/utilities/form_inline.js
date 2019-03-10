@@ -32,14 +32,16 @@ function formInlineHandler(testId) {
   var $testTitle = $('.test-title[data-test-id="' + testId + '"]')
   var $formInline = $('.form-inline[data-test-id="' + testId + '"]')
 
-  $testTitle.toggle()
-  $formInline.toggle()
+  if ($formInline.length) {
 
+    $testTitle.toggle()
+    $formInline.toggle()
 
-  if ($formInline.is(':visible')) {
-    link.textContent = 'Cancel'
-  } else {
-    link.textContent = 'Edit'
+    if ($formInline.is(':visible')) {
+      link.textContent = 'Cancel'
+    } else {
+      link.textContent = 'Edit'
+    }
   }
 }
 
