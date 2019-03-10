@@ -11,7 +11,7 @@ class  GistQuestionService
 
   private
     def gist_params
-      { public: true,
+      { public: true, #  не помачать гист ка секретный
         description: I18n.t('service.gist_question_service.description', title: @test.title),
         files: {
           'test-quru-question.txt' => {
