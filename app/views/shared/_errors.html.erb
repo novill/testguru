@@ -1,7 +1,6 @@
-<% if record.errors.any? %>
-  <div id="error_explanation">
+<% if record.present? && record.errors.any? %>
+  <%= content_tag :div, class: 'record-errors', data: {record_id: record.id} do %>
     <h2>
-<!--      <%#= pluralize(record.errors.count, "error") %> prohibited this <%#= record.class.to_s.downcase %> from being saved:-->
 
       <%= t('.header', count: record.errors.count) %>
     </h2>
@@ -11,5 +10,5 @@
         <li><%= message %></li>
       <% end %>
     </ul>
-  </div>
+  <% end %>
 <% end %>
