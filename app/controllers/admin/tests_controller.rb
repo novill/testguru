@@ -36,9 +36,6 @@ class Admin::TestsController < Admin::BaseController
   def update_inline
     if @test.update(permitted_params)
       redirect_to admin_tests_path
-      puts '-' * 50
-      puts @tests.pluck(:id, :title)
-      puts '-' * 50
     else
       render :index
     end
