@@ -17,9 +17,10 @@ user_names.each_with_index do |name, index|
   User.find_or_create_by!(
     name: name,
     email: "#{name.tr(' ', '')}@example.com") do |user|
-      user.password = index.to_s
+      user.password = index.to_s * 6
       puts "#{user.name} #{user.password}"
-      user.password_confirmation = index.to_s
+      user.password_confirmation = user.password
+      user.confirmed_at = Time.current
     end
 end
 
