@@ -7,8 +7,9 @@ class FeedbackMailer < ApplicationMailer
   #
   def send_email(message, reply_to)
     @message = message
+    @reply_to =reply_to
     mail to: Admin.first.email,
-         reply_to: reply_to,
+         reply_to: @reply_to,
          subject: 'Testguru feedback'
   end
 end

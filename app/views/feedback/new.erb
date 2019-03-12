@@ -1,4 +1,3 @@
-<%=  current_user.email %>
 <%= form_with url: send_email_feedback_path, local: true, method: :post do |form| %>
   <p>
     <%= form.label t('.feedback')  %>
