@@ -67,10 +67,12 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'mighty-eyrie-86451.herokuapp.com'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default :charset => "utf-8"
-  config.action_mailer.smtp_settings = {
+  config.action_mailer.default = {
     from: "SenderName <foffalex@gmail.com>",
     reply_to: "SenderName <foffalex@gmail.com>",
+    charset: "utf-8"
+  }
+  config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'mighty-eyrie-86451.herokuapp.com',
