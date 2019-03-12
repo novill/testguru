@@ -56,7 +56,8 @@ ru:
         edit: "Править"
         delete: "Удалить"
         confirm: "Вы уверены?"
-
+      form_inline:
+        submit: "Ok"
     not_admin: "Вы не адиминистратор!"
 
   tests_mailer:

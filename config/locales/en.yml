@@ -57,6 +57,8 @@ en:
         edit: "Edit"
         delete: "Delete"
         confirm: "Are you sure"
+      form_inline:
+        submit: "Ok"
     not_admin: "You are not admin!"
 
 

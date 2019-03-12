@@ -1,8 +1,8 @@
 class Admin::TestsController < Admin::BaseController
-  before_action :set_test, only: [:show, :edit, :update, :start, :destroy]
+  before_action :set_tests, only: [:index, :update_inline]
+  before_action :set_test, only: [:show, :edit, :update, :destroy, :update_inline]
 
   def index
-    @tests = Test.all # .includes(:questions).to_a
   end
 
   def show
@@ -27,9 +27,17 @@ class Admin::TestsController < Admin::BaseController
 
   def update
     if @test.update(permitted_params)
-      admin_test_path(@test)
+      redirect_to [:admin, @test]
     else
       render :new
+    end
+  end
+
+  def update_inline
+    if @test.update(permitted_params)
+      redirect_to admin_tests_path
+    else
+      render :index
     end
   end
 
@@ -46,5 +54,9 @@ class Admin::TestsController < Admin::BaseController
 
     def set_test
       @test = Test.find(params[:id])
+    end
+
+    def set_tests
+      @tests = Test.all
     end
 end

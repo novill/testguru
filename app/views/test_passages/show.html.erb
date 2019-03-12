@@ -16,3 +16,8 @@
 
 <% end %>
 <%= link_to 'Gist question', send_gist_test_passage_path(@test_passage), method: :post %>
+
+<progress max="<%= @test_passage.test.questions_count%>"
+          value="<%= @test_passage.done_questions_count %>">
+</progress>
+

@@ -1,6 +1,8 @@
 <div class="container">
   <h1><%= t('.header') %></h1>
 
+  <%= render "shared/errors", record: @test %>
+
   <table class="table table-sm">
     <thead class="thead-dark">
       <tr>
