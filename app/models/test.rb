@@ -37,6 +37,11 @@ class Test < ApplicationRecord
     by_category_name(name).order('tests.title DESC').pluck('tests.title')
   end
 
+  def questions_count
+    @count ||= questions.count
+  end
+
+
   def to_s
     "#{category.title} #{title} #{level} #{author.name}"
   end
