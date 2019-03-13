@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users,
              path: :gurus,
              path_names: { sign_in: :login, sign_out: :logout }
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :users, only: :index
     resources :gists, only: :index
     resources :tests do
       patch :update_inline, on: :member

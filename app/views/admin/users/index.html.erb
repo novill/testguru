@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>User list</h1>
+  <table class="table table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th class="sort-by-title pointer" >
+          Name
+          <%= octicon 'arrow-up', class: 'text-success hide' %>
+          <%= octicon 'arrow-down', class: 'text-success hide' %>
+        </th>
+        <th scope="col">Email</th>
+        <th scope="col">Type</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= render partial: 'admin/users/user', collection: @users %>
+    </tbody>
+  </table>
+</div>

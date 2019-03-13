@@ -6,13 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 ['Ruby', 'CSS', 'SQL', 'Marketing', 'Management'].each do |title|
   Category.find_or_create_by(title: title)
 end
 
 puts "Созданы категории: #{Category.pluck(:title)}"
 
-user_names = ['Jonh Smith', 'Richard Branson', 'Ilon Mask', 'Ben Davis']
+user_names = ['John Smith', 'Richard Branson', 'Ilon Mask', 'Ben Davis']
 user_names.each_with_index do |name, index|
   User.find_or_create_by!(
     name: name,
