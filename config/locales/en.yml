@@ -79,3 +79,7 @@ en:
       header:
         one: "%{count} error detected"
         other: "%{count} errors detected"
+  feedback:
+    new:
+      feedback: 'Your message'
+      send: 'Send email'
