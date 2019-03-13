@@ -8,6 +8,7 @@
         <%= link_to 'Пользователи', admin_users_path, class: 'navber-link' %>
         <%= link_to t('.gists'), admin_gists_path, class: "navbar-link" %> |
       <% end %>
+      <%=link_to 'Обратная связь', new_feedback_path, class: "navbar-link" %> |
       <b><%= t('.welcome', email:current_user.email) %></b> |
       <%= link_to t('.logout'), destroy_user_session_path, method: :delete%>
     <% else %>

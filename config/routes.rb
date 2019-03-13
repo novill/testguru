@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :feedback, only: :new, controller: 'feedback' do
+    post :send_email
+  end
+
   namespace :admin do
     resources :users, only: :index
     resources :gists, only: :index

@@ -1,0 +1,9 @@
+<%= form_with url: send_email_feedback_path, local: true, method: :post do |form| %>
+  <p>
+    <%= form.label t('.feedback')  %>
+    <%= form.text_field :message %>
+  </p>
+
+  <%= form.submit t('.send') %>
+
+<% end %>
