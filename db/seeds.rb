@@ -1,11 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 
+# Так обычно не делают но ерхоку не дает мне удалять бд через rake db:drop
+if ENV['CLEAN_DATABASE_BEFORE_SEED']
+  require 'database_cleaner'
+  DatabaseCleaner.clean_with :deletion
+end
 
 ['Ruby', 'CSS', 'SQL', 'Marketing', 'Management'].each do |title|
   Category.find_or_create_by(title: title)
@@ -19,15 +17,18 @@ user_names.each_with_index do |name, index|
     name: name,
     email: "#{name.tr(' ', '')}@example.com") do |user|
       user.password = index.to_s * 6
-      puts "#{user.name} #{user.password}"
       user.password_confirmation = user.password
       user.confirmed_at = Time.current
     end
 end
 
+User.last.update_attribute(:type, 'Admin')
+
 puts "Созданы пользователи: #{User.all.pluck(:name)}"
 
-default_author = User.last
+puts "Администраторы: #{Admin.all.pluck(:name)}"
+
+default_author = Admin.first
 
 Category.all.each do |category|
   category.tests.find_or_create_by!(
@@ -55,7 +56,7 @@ puts "Созданы тесты: #{Test.all.map(&:to_s)}"
 Test.all.each do |test|
   next if test.questions.any?
 
-  test.questions = Array.new(2) do |number|
+  test.questions = Array.new(4) do |number|
     number += 1
     Question.new(body: "Question body #{number} for #{test}")
   end
@@ -68,9 +69,10 @@ Question.all.each do |question|
 
   question.answers = Array.new(4) do |number|
     number += 1
+    correct = (question.id + number).even?
     Answer.new(
-      body: "Answer #{number} for question #{question.id}",
-      correct: (question.id + number).even?
+      body: "Answer #{number} for question #{question.id} #{correct ? 'c' : ''}" ,
+      correct: correct
     )
   end
 end
