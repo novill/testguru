@@ -32,15 +32,31 @@ function sortRowsByTitle() {
 
   var sortedTable = document.createElement('table')
 
-  sortedTable.classList.add('table')
+  //перенсти все классы
+  sortedTable.classList = table.classList
 
-  // TODO сделать перенос всех классов
-  // sortedTable.classList = table.classList
+  //перенести шапку нормально
+  var thead = table.querySelector('thead')
+  if (thead == null) {
+    sortedTable.appendChild(rows[0])
+  } else {
+    sortedTable.appendChild(thead)
+  }
 
-  sortedTable.appendChild(rows[0])
+  //  при налиции tbody будем добавлять в tbody
+  var tbody = table.querySelector('tbody')
 
-  for ( var i = 0; i <sortedRows.length; i++) {
-    sortedTable.appendChild(sortedRows[i])
+  if (tbody == null) {
+    for (var i = 0; i < sortedRows.length; i++) {
+      sortedTable.appendChild(sortedRows[i])
+    }
+  } else {
+    var sortedbody = document.createElement('tbody')
+
+    for (var i = 0; i < sortedRows.length; i++) {
+      sortedbody.appendChild(sortedRows[i])
+    }
+    sortedTable.appendChild(sortedbody)
   }
 
   table.parentNode.replaceChild(sortedTable, table)
