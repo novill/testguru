@@ -6,8 +6,12 @@ class TestsController < ApplicationController
   end
 
   def start
-    current_user.tests.push(@test) # find_or_create
-    redirect_to current_user.test_passage(@test)
+     # если нет незаконченнных, создаем новый
+    unless current_user.unfinished_test(@test)
+      current_user.tests.push(@test)
+    end
+
+    redirect_to current_user.unfinished_test(@test)
   end
 
   private

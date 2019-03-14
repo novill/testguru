@@ -21,6 +21,10 @@
     <%= form.collection_select :user_id, User.all, :id, :name, prompt: true %>
   </p>
 
+  <p>
+    <%= form.label :timer  %>
+    <%= form.number_field :timer %>
+  </p>
 
   <div class="actions">
     <%= form.submit %>

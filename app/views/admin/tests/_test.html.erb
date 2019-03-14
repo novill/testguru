@@ -6,12 +6,13 @@
   <td class="align-middle"><%= test.level %></td>
   <td class="align-middle"><%= test.category %></td>
   <td class="align-middle"><%= test.author %></td>
+  <td class="align-middle"><%= test.timer %></td>
   <td class="align-middle"><%= test.questions.size %></td>
   <td class="align-middle"><%= link_to t('.show'), admin_test_path(test), class: "btn btn-info" %></td>
   <td class="align-middle">
     <%= link_to t('.edit'), edit_admin_test_path(test),
                 data: {test_id: test.id},
-                class: "btn btn-warning form-inline-link" %>
+                class: "btn btn-warning form-inline-link_disable" %>
   </td>
   <td class="align-middle"><%= link_to t('.delete'),
                   admin_test_path(test),

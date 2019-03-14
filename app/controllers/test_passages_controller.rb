@@ -5,6 +5,7 @@ class TestPassagesController < ApplicationController
   end
 
   def result
+    @test_passage.set_result_to_passed
   end
 
   def update

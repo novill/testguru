@@ -26,7 +26,7 @@ User.last.update_attribute(:type, 'Admin')
 
 puts "Созданы пользователи: #{User.all.pluck(:name)}"
 
-puts "Администраторы: #{Admin.all.pluck(:name)}"
+puts "Администраторы: #{Admin.all.pluck(:name, :email)}"
 
 default_author = Admin.first
 

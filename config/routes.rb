@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :test_passages, only: :index
     resources :users, only: :index
     resources :gists, only: :index
     resources :tests do
