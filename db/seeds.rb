@@ -1,8 +1,14 @@
 
 # Так обычно не делают но ерхоку не дает мне удалять бд через rake db:drop
 if ENV['CLEAN_DATABASE_BEFORE_SEED']
-  require 'database_cleaner'
-  DatabaseCleaner.clean_with :deletion
+  # require 'database_cleaner'
+  # DatabaseCleaner.clean_with :deletion
+  TestPassage.delete_all
+  Answer.delete_all
+  Question.delete_all
+  Test.delete_all
+  User.delete_all
+  Category.delete_all
 end
 
 ['Ruby', 'CSS', 'SQL', 'Marketing', 'Management'].each do |title|
