@@ -5,6 +5,7 @@ if ENV['CLEAN_DATABASE_BEFORE_SEED']
   # DatabaseCleaner.clean_with :deletion
   TestPassage.delete_all
   Answer.delete_all
+  Gist.delete_all
   Question.delete_all
   Test.delete_all
   User.delete_all
