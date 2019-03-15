@@ -33,6 +33,4 @@ class User < ApplicationRecord
   def unfinished_test(test)
     test_passages.where(passed: nil).order(id: :desc).find_by(test_id: test.id)
   end
-
-
 end

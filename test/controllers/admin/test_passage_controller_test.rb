@@ -5,5 +5,4 @@ class Admin::TestPassageControllerTest < ActionDispatch::IntegrationTest
     get admin_test_passage_index_url
     assert_response :success
   end
-
 end

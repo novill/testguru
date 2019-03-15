@@ -3,11 +3,8 @@
 <table class="table table-striped table-bordered table-hover table-sm">
   <thead class="thead-dark">
   <tr>
-    <th class="sort-by-title pointer" >
-      Пользователь
-      <%= octicon 'arrow-up', class: 'text-success hide' %>
-      <%= octicon 'arrow-down', class: 'text-success hide' %>
-    </th>
+    <th> Id </th>
+    <th> Пользователь </th>
     <th scope="col">Тест</th>
     <th scope="col"> Длительность, мин</th>
     <th scope="col">Время старта</th>
@@ -18,6 +15,7 @@
   <tbody>
     <% @test_passages.each do |test_passage| %>
       <tr>
+        <td><%= test_passage.id %>  </td>
         <td><%= test_passage.user.email %>  </td>
         <td><%= test_passage.test.title %>  </td>
         <td><%= test_passage.test.timer %> </td>

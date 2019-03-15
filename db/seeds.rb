@@ -34,7 +34,7 @@ Category.all.each do |category|
   category.tests.find_or_create_by!(
     title: "Beginner test for #{category.title}",
     level: 0,
-    author: default_author
+    author: default_author,
   )
   category.tests.find_or_create_by!(
     title: "Medium test for #{category.title}",
@@ -50,6 +50,8 @@ Category.first(3).each do |category|
     author: default_author
   )
 end
+
+Category.first.tests.update_all('timer = level +1')
 
 puts "Созданы тесты: #{Test.all.map(&:to_s)}"
 
@@ -71,7 +73,7 @@ Question.all.each do |question|
     number += 1
     correct = (question.id + number).even?
     Answer.new(
-      body: "Answer #{number} for question #{question.id} #{correct ? 'c' : ''}" ,
+      body: "Answer #{number} for question #{question.id} #{correct ? 'c' : ''}",
       correct: correct
     )
   end

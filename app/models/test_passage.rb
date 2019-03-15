@@ -27,12 +27,12 @@ class TestPassage < ApplicationRecord
   def set_result_to_passed
     passed unless passed.nil?
 
-     in_time =
-       if test.timer
-         (created_at + test.timer.minutes) < Time.now
-       else
-         true
-       end
+    in_time =
+      if test.timer
+        (created_at + test.timer.minutes) < Time.now
+      else
+        true
+      end
 
     self.passed = in_time && (percent_result >= MIN_SUCCESS_PERCENT)
     self.current_question_id = nil

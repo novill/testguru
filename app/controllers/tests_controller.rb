@@ -6,7 +6,7 @@ class TestsController < ApplicationController
   end
 
   def start
-     # если нет незаконченнных, создаем новый
+    # если нет незаконченнных, создаем новый
     unless current_user.unfinished_test(@test)
       current_user.tests.push(@test)
     end

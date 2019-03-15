@@ -1,7 +1,16 @@
 class TestPassagesController < ApplicationController
-  before_action :set_test_passage, only: [:show, :update, :result, :send_gist]
+  before_action :set_test_passage, only: [:show, :update, :result, :send_gist, :time_left]
 
   def show
+  end
+
+  def time_left
+    return nil if @test_passage.test.timer.nil?
+
+    left = @test_passage.created_at +
+           @test_passage.test.timer.minutes -
+           Time.now
+    render plain: left.round
   end
 
   def result
