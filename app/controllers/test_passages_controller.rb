@@ -5,12 +5,7 @@ class TestPassagesController < ApplicationController
   end
 
   def time_left
-    return nil if @test_passage.test.timer.nil?
-
-    left = @test_passage.created_at +
-           @test_passage.test.timer.minutes -
-           Time.now
-    render plain: left.round
+    render plain: @test_passage.time_left
   end
 
   def result

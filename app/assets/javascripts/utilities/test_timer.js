@@ -1,17 +1,20 @@
 $(document).ready(
   function(){
     timer = $('span#test_timer')
-    testPassageId = timer.data('testPassageId')
-    timer.load('/test_passages/' + testPassageId + '/time_left');
+    if ( timer.length )
+      {
+      var base_time = parseInt(timer.text())
+      var testPassageId = timer.data('testPassageId')
 
-    setInterval(function(){
-      timer = $('span#test_timer')
-      seconds_left = parseInt(timer.text())
-      if (seconds_left <= 0) {
-        window.location = "/test_passages/" + timer.data('testPassageId') + '/result';
-      } else {
-        timer.text(seconds_left - 1);
-      }
-    }, 1000);
+      setInterval(function(){
+        timer = $('span#test_timer')
+        if (base_time <= 0) {
+          window.location = "/test_passages/" + testPassageId + '/result';
+        } else {
+          base_time -= 1
+          timer.text(base_time);
+        }
+      }, 1000);
+    }
   });
 
