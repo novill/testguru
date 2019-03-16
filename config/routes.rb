@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users,
              path: :gurus,
              path_names: { sign_in: :login, sign_out: :logout }
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
     member do
       get :result
       post :send_gist
+      get :time_left
     end
   end
 
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :test_passages, only: :index
     resources :users, only: :index
     resources :gists, only: :index
     resources :tests do

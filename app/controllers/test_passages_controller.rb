@@ -1,10 +1,15 @@
 class TestPassagesController < ApplicationController
-  before_action :set_test_passage, only: [:show, :update, :result, :send_gist]
+  before_action :set_test_passage, only: [:show, :update, :result, :send_gist, :time_left]
 
   def show
   end
 
+  def time_left
+    render plain: @test_passage.time_left
+  end
+
   def result
+    @test_passage.set_result_to_passed
   end
 
   def update

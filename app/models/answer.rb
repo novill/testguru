@@ -4,7 +4,6 @@ class Answer < ApplicationRecord
   validates :body, presence: true
   validate :validate_question_answers_count, on: :create
 
-  default_scope -> { order(:id) }
   scope :correct, -> { where(correct: true) }
 
   private

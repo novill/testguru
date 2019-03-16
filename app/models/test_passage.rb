@@ -24,8 +24,19 @@ class TestPassage < ApplicationRecord
     # "#{self.correct_questions} #{test.questions.count}"
   end
 
-  def success?
-    percent_result >= MIN_SUCCESS_PERCENT
+  def time_left
+    return nil if test.timer.nil?
+    (created_at + test.timer.minutes - Time.now).round
+  end
+
+  def set_result_to_passed
+    passed unless passed.nil?
+
+    in_time = time_left.nil? || (time_left > 0)
+
+    self.passed = in_time && (percent_result >= MIN_SUCCESS_PERCENT)
+    self.current_question_id = nil
+    save!
   end
 
   def done_questions_count

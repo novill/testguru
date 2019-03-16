@@ -1,8 +1,15 @@
 
 # Так обычно не делают но ерхоку не дает мне удалять бд через rake db:drop
 if ENV['CLEAN_DATABASE_BEFORE_SEED']
-  require 'database_cleaner'
-  DatabaseCleaner.clean_with :deletion
+  # require 'database_cleaner'
+  # DatabaseCleaner.clean_with :deletion
+  TestPassage.delete_all
+  Answer.delete_all
+  Gist.delete_all
+  Question.delete_all
+  Test.delete_all
+  User.delete_all
+  Category.delete_all
 end
 
 ['Ruby', 'CSS', 'SQL', 'Marketing', 'Management'].each do |title|
@@ -26,7 +33,7 @@ User.last.update_attribute(:type, 'Admin')
 
 puts "Созданы пользователи: #{User.all.pluck(:name)}"
 
-puts "Администраторы: #{Admin.all.pluck(:name)}"
+puts "Администраторы: #{Admin.all.pluck(:name, :email)}"
 
 default_author = Admin.first
 
@@ -34,7 +41,7 @@ Category.all.each do |category|
   category.tests.find_or_create_by!(
     title: "Beginner test for #{category.title}",
     level: 0,
-    author: default_author
+    author: default_author,
   )
   category.tests.find_or_create_by!(
     title: "Medium test for #{category.title}",
@@ -50,6 +57,8 @@ Category.first(3).each do |category|
     author: default_author
   )
 end
+
+Category.first.tests.update_all('timer = level +1')
 
 puts "Созданы тесты: #{Test.all.map(&:to_s)}"
 
@@ -71,7 +80,7 @@ Question.all.each do |question|
     number += 1
     correct = (question.id + number).even?
     Answer.new(
-      body: "Answer #{number} for question #{question.id} #{correct ? 'c' : ''}" ,
+      body: "Answer #{number} for question #{question.id} #{correct ? 'c' : ''}",
       correct: correct
     )
   end

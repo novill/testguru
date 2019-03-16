@@ -1,5 +1,12 @@
 <h1>Passing the <<%= @test_passage.test.title %> the test</h1>
 
+<% if @test_passage.test.timer %>
+  <div>
+    Осталось
+    <%= content_tag :span, @test_passage.time_left, id:"test_timer", data: { test_passage_id: @test_passage.id} %>
+    секунд
+  </div>
+<% end %>
 <p>
   <%= @test_passage.current_question.body %>
 </p>

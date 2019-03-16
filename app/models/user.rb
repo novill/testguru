@@ -17,8 +17,6 @@ class User < ApplicationRecord
   validates_format_of :email, with: /.+@.+\..+/i
   validates :email, uniqueness: true
 
-  # scope :test_by_level, ->(level) { passing_tests.where(level: level) }
-
   def admin?
     is_a?(Admin)
   end
@@ -28,6 +26,11 @@ class User < ApplicationRecord
   end
 
   def test_passage(test)
+    puts __method__, 'удалить'
     test_passages.order(id: :desc).find_by(test_id: test.id)
+  end
+
+  def unfinished_test(test)
+    test_passages.where(passed: nil).order(id: :desc).find_by(test_id: test.id)
   end
 end

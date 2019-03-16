@@ -1,5 +1,4 @@
 class FeedbackMailer < ApplicationMailer
-
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -7,7 +6,7 @@ class FeedbackMailer < ApplicationMailer
   #
   def send_email(message, reply_to)
     @message = message
-    @reply_to =reply_to
+    @reply_to = reply_to
     mail to: Admin.first.email,
          reply_to: @reply_to,
          subject: 'Testguru feedback'

@@ -3,6 +3,7 @@
   <p><%= Test.human_attribute_name(:level) %>: <%=@test.level %></p>
   <p><%= Test.human_attribute_name(:category) %>: <%=@test.category %></p>
   <p><%= Test.human_attribute_name(:author) %>: <%=@test.author %></p>
+  <p>Длительность, минут: <%=@test.timer %></p>
   <br>
   <%= link_to t('.edit'), edit_admin_test_path(@test), class: "btn btn-link" %> |
   <%= link_to t('.list'), admin_tests_path, class: "btn btn-link" %>

@@ -15,6 +15,11 @@ class Test < ApplicationRecord
   validates :title, presence: true, uniqueness: { scope: :level }
   validates :level, inclusion: 0..3, allow_nil: true
 
+  validates :timer, numericality: {
+      only_integer: true,
+      greater_than: 0
+  }, allow_nil: true
+
   scope :by_complexity, -> (complexity) do
     levels = case complexity
              when :easy
