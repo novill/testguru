@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @badge_type.type %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @badge_type.name %>
+</p>
+
+<%= link_to 'Edit', edit_badge_type_path(@badge_type) %> |
+<%= link_to 'Back', badge_types_path %>
