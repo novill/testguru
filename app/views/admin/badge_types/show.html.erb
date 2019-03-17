@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Type:</strong>
-  <%= @badge_type.type %>
+  <strong>BType:</strong>
+  <%= @badge_type.b_type %>
 </p>
 
 <p>
@@ -10,5 +10,5 @@
   <%= @badge_type.name %>
 </p>
 
-<%= link_to 'Edit', edit_badge_type_path(@badge_type) %> |
-<%= link_to 'Back', badge_types_path %>
+<%= link_to 'Edit', edit_admin_badge_type_path(@badge_type) %> |
+<%= link_to 'Back', admin_badge_types_path %>

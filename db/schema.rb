@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_03_16_213438) do
   end
 
   create_table "badge_types", force: :cascade do |t|
-    t.string "type", null: false
+    t.string "b_type", null: false
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
