@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :badge_types
+    resources :badges
     resources :test_passages, only: :index
     resources :users, only: :index
     resources :gists, only: :index

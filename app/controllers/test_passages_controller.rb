@@ -10,6 +10,8 @@ class TestPassagesController < ApplicationController
 
   def result
     @test_passage.set_result_to_passed
+    Badge.check_new_badges(@test_passage)
+
   end
 
   def update

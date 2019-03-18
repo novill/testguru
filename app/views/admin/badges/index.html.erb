@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Badges</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Badge type</th>
+      <th>Active</th>
+      <th>Image</th>
+      <th>Object type</th>
+      <th>Object</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @badges.each do |badge| %>
+      <tr>
+        <td><%= badge.badge_type %></td>
+        <td><%= badge.active %></td>
+        <td><%= image_tag badge.image_url, size:"20x20" %></td>
+        <td><%= badge.object_type %></td>
+        <td><%= badge.object_id %></td>
+        <td><%= link_to 'Show', admin_badge_path(badge) %></td>
+        <td><%= link_to 'Edit', edit_admin_badge_path(badge) %></td>
+        <td><%= link_to 'Destroy', admin_badge_path(badge), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Badge', new_admin_badge_path %>
