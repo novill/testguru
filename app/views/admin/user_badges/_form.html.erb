@@ -1,0 +1,32 @@
+<%= form_with(model: [:admin, user_badge], local: true) do |form| %>
+  <% if user_badge.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user_badge.errors.count, "error") %> prohibited this user_badge from being saved:</h2>
+
+      <ul>
+      <% user_badge.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :badge_id %>
+    <%= form.collection_select :badge_id, Badge.all, :id, :to_s, prompt: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.collection_select :user_id, User.all, :id, :email, prompt: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :count %>
+    <%= form.number_field :count %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

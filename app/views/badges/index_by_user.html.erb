@@ -1,0 +1,19 @@
+<h1>Your badges</h1>
+<table class="table">
+  <thead>
+   <tr>
+     <td>Image</td>
+     <td>count</td>
+     <td>Title</td>
+   </tr>
+  </thead>
+  <tbody>
+    <% @user_badges.each do |user_badge|%>
+     <tr>
+       <td> <%= image_tag user_badge.badge.image_url, size: '20x20' %></td>
+       <td> <%= user_badge.count %></td>
+       <td> <%= user_badge.badge %></td>
+     </tr>
+    <% end %>
+  </tbody>
+</table>

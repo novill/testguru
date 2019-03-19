@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Badge:</strong>
+  <%= @user_badge.badge %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_badge.user %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @user_badge.count %>
+</p>
+
+<%= link_to 'Edit', edit_admin_user_badge_path(@user_badge) %> |
+<%= link_to 'Back', admin_user_badges_path %>

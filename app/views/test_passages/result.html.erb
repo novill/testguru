@@ -1,4 +1,5 @@
 <h1> <%= I18n.t('test_passages.result.header', title: @test_passage.test.title) %></h1>
+
 <% if @test_passage.passed %>
  <p id="success">
   You successfully passed this test <%=@test_passage.percent_result%>%
@@ -7,4 +8,13 @@
   <p id="fail">
     You failed this test <%=@test_passage.percent_result%>%
   </p>
+<% end %>
+
+<% unless @new_badges.empty? %>
+  <% @new_badges.each do |badge| %>
+    <p>
+      <%= image_tag badge.image_url, size: '20x20' %>
+      <%= badge %>
+    </p>
+  <% end %>
 <% end %>

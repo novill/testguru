@@ -24,13 +24,11 @@
   <div class="field">
     <%= form.label :image_url %>
     <%= form.text_field :image_url %>
+  </div>
 
-
-    <div class="field">
+  <div class="field">
     <%= form.label :object_type %>
-    <%= form.text_field :object_type %>
-    <%# options = [['Категория','Category'],['']] %>
-<!--    options_for_select([['Lisbon', 1], ['Madrid', 2], ['Berlin', 3]])-->
+    <%= form.select :object_type, Badge::ALLOWED_OBJECT_TYPES %>
   </div>
 
   <div class="field">
