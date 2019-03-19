@@ -20,17 +20,20 @@ class User < ApplicationRecord
   validates_format_of :email, with: /.+@.+\..+/i
   validates :email, uniqueness: true
 
+  def success_tests
+    tests.where(test_passages: {passed: true})
+  end
+
+  def failed_tests
+    tests.where(test_passages: {passed: false})
+  end
+
   def admin?
     is_a?(Admin)
   end
 
   def to_s
     name
-  end
-
-  def test_passage(test)
-    puts __method__, 'удалить'
-    test_passages.order(id: :desc).find_by(test_id: test.id)
   end
 
   def unfinished_test(test)
