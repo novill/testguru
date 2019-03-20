@@ -1,0 +1,17 @@
+<h1>All badges</h1>
+<table class="table">
+  <thead>
+   <tr>
+     <td>Image</td>
+     <td>Title</td>
+   </tr>
+  </thead>
+  <tbody>
+    <% @badges.each do |badge|%>
+     <tr>
+       <td> <%= image_tag badge.image_url, size: '20x20' %></td>
+       <td> <%= badge %></td>
+     </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,4 +1,4 @@
-class Admin::TestPassagesController < ApplicationController
+class Admin::TestPassagesController < Admin::BaseController
   def index
     @test_passages = TestPassage.all
   end

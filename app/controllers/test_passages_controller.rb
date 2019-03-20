@@ -10,6 +10,8 @@ class TestPassagesController < ApplicationController
 
   def result
     @test_passage.set_result_to_passed
+    @new_badges = GainBadgeService.new(@test_passage).call
+
   end
 
   def update

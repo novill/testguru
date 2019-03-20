@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Badge type:</strong>
+  <%= @badge.badge_type %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @badge.active %>
+</p>
+
+<p>
+  <strong>Image</strong>
+  <%= image_tag @badge.image_url, size:"20x20" %></td>
+</p>
+
+<p>
+  <strong>Object type:</strong>
+  <%= @badge.object_type %>
+</p>
+
+<p>
+  <strong>Object:</strong>
+  <%= @badge.object_id %>
+</p>
+
+<%= link_to 'Edit', edit_admin_badge_path(@badge) %> |
+<%= link_to 'Back', admin_badges_path %>

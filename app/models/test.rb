@@ -48,6 +48,6 @@ class Test < ApplicationRecord
 
 
   def to_s
-    "#{category.title} #{title} #{level} #{author.name}"
+    " #{id} #{category.title} #{title} #{level} #{author.name}"
   end
 end
